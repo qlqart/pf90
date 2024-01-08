@@ -100,26 +100,30 @@
       document.body.appendChild(script);
 
 
-      let isPortrait = window.matchMedia("(orientation: portrait)").matches;
+      function showPortraitAlert() {
+    const isPortrait = window.matchMedia("(orientation: portrait)").matches;
 
-function showPortraitAlert() {
     if (isPortrait) {
         // Wyświetl alert, gdy orientacja jest portrait
         alert("Orientation is Portrait!");
-
-        // Ponownie pokaż alert po zamknięciu poprzedniego
-        setTimeout(showPortraitAlert, 0);
     }
+
+    // Ponownie sprawdź orientację po pewnym czasie
+    setTimeout(showPortraitAlert, 1000);
 }
 
 window.matchMedia("(orientation: portrait)").addEventListener("change", e => {
-    isPortrait = e.matches;
+    const isPortrait = e.matches;
 
     if (!isPortrait) {
         // Zatrzymaj wyświetlanie alertu, gdy orientacja jest landscape
         clearTimeout(showPortraitAlert);
     }
 });
+
+// Rozpocznij wyświetlanie alertu
+showPortraitAlert();
+
     </script>
   </body>
 </html>
