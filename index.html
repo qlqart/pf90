@@ -99,16 +99,27 @@
       };
       document.body.appendChild(script);
 
-      window.matchMedia("(orientation: portrait)").addEventListener("change", e => {
-    const portrait = e.matches;
 
-    if (portrait) {
-        console.log("Portrait");
-    } else {
-      console.log("Landscape");
+      let isPortrait = window.matchMedia("(orientation: portrait)").matches;
+
+function showPortraitAlert() {
+    if (isPortrait) {
+        // Wyświetl alert, gdy orientacja jest portrait
+        alert("Orientation is Portrait!");
+
+        // Ponownie pokaż alert po zamknięciu poprzedniego
+        setTimeout(showPortraitAlert, 0);
+    }
+}
+
+window.matchMedia("(orientation: portrait)").addEventListener("change", e => {
+    isPortrait = e.matches;
+
+    if (!isPortrait) {
+        // Zatrzymaj wyświetlanie alertu, gdy orientacja jest landscape
+        clearTimeout(showPortraitAlert);
     }
 });
-
     </script>
   </body>
 </html>
