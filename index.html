@@ -98,32 +98,6 @@
         });
       };
       document.body.appendChild(script);
-
-
-      function showPortraitAlert() {
-    const isPortrait = window.matchMedia("(orientation: portrait)").matches;
-
-    if (isPortrait) {
-        // Wyświetl alert, gdy orientacja jest portrait
-        alert("Orientation is Portrait!");
-    }
-
-    // Ponownie sprawdź orientację po pewnym czasie
-    setTimeout(showPortraitAlert, 1000);
-}
-
-window.matchMedia("(orientation: portrait)").addEventListener("change", e => {
-    const isPortrait = e.matches;
-
-    if (!isPortrait) {
-        // Zatrzymaj wyświetlanie alertu, gdy orientacja jest landscape
-        clearTimeout(showPortraitAlert);
-    }
-});
-
-// Rozpocznij wyświetlanie alertu
-showPortraitAlert();
-
     </script>
   </body>
 </html>
