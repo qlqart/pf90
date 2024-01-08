@@ -98,6 +98,17 @@
         });
       };
       document.body.appendChild(script);
+
+      window.matchMedia("(orientation: portrait)").addEventListener("change", e => {
+    const portrait = e.matches;
+
+    if (portrait) {
+        console.log("Portrait");
+    } else {
+      console.log("Landscape");
+    }
+});
+
     </script>
   </body>
 </html>
